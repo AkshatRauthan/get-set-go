@@ -7,7 +7,7 @@ func main() {
 	var name string = "developer-akshat"
 	var age uint = 21 // unsigned integers
 	var isDeveloper bool = true
-	
+
 	//without type decleration
 	var c64 = 5 + 7i // complex numbers with 32-bit real and imaginary parts => (5+7i)
 
@@ -40,4 +40,9 @@ func main() {
 	fmt.Println("pie: ", pie)
 	fmt.Println("c64: ", c64)
 	fmt.Println("  ")
+
+	// In shorthand declaration if we are declaring/initialising multiple variables....
+	// Then using := will work only if there is at least one new variable in left side....
+	// x, y := 20, 10     ✖ [both x and y are already initialised]
+	// x,y,z := 10,20,30  ✔ [z is newly initialised]
 }
