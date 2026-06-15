@@ -1,5 +1,8 @@
 package main
 
+// RUN command
+// go run main.go pointers.go referenced-maps.go referenced-slices.go
+
 func main() {
 	println("\nPointers: ")
 	pointers()
@@ -22,5 +25,5 @@ func main() {
 	println("Updations: Persistent strictly before first reallocation")
 	println("NOTE: Inside called function we cant use methods like cap or len. To use them we need to create a new slice or pass a slice pointer")
 	referencedSlices()
-
+	println("\n\nNOTE: To handle this behaviour always return slices if you need them to be modified")
 }
