@@ -2,7 +2,7 @@ package main
 
 import "fmt"
 
-func switch_case() {
+func SwitchCase() {
 	i := 3
 	// 2. switch case statements => Here no break needed in switch needed
 	switch i {

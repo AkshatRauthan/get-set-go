@@ -2,7 +2,7 @@ package main
 
 import "fmt"
 
-func type_switch() {
+func TypeSwitch() {
 	// Using Type switch
 	mul := func(i any) {
 		switch i.(type) {

@@ -2,7 +2,7 @@ package main
 
 import "fmt"
 
-func if_else() {
+func IfElse() {
 	var num int = -1
 
 	fmt.Println("Enter input btw 1 and 10")

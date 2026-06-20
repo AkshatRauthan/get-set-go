@@ -18,6 +18,7 @@ func greetPersons() {
 	greetGoodMorning("Alan")
 	greetGoodMorning("Aanand")
 
+	// Directly using it without storing the returned function instance.....
 	createGreeting("Good Morning")("India")
-	createGreeting("Hello")("Fuckerzz")
+	createGreeting("Hello")("Everyone.....")
 }

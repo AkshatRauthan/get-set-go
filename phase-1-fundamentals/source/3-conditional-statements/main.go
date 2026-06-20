@@ -7,11 +7,11 @@ import "fmt"
 
 func main() {
 	fmt.Print("\n1. If Else Statement\n")
-	if_else()
+	IfElse()
 
 	fmt.Print("\n\n2. Switch Case Statement\n")
-	switch_case()
+	SwitchCase()
 
 	fmt.Print("\n\n3. Type Switch Statement\n")
-	type_switch()
+	TypeSwitch()
 }
