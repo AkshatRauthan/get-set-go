@@ -68,7 +68,6 @@ func WrappedErrors() {
 		if errors.Is(err, RecordNotFoundError) {
 			println("Confirmed via errors.Is() => RecordNotFoundError is in the chain")
 		}
-		fmt.Println("\nPrinting an Wrapped Error Object:\n", err.Error())
 	}
 
 	// Case 3: unauthorized user => errors.Is() catches UnauthorizedAccessError
@@ -79,6 +78,5 @@ func WrappedErrors() {
 		if errors.Is(err, UnauthorizedAccessError) {
 			println("Confirmed via errors.Is() => UnauthorizedAccessError is in the chain")
 		}
-		fmt.Println("\nPrinting an Wrapped Error Object:\n", err.Error())
 	}
 }
