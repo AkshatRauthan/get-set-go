@@ -5,8 +5,8 @@ import (
 )
 
 type TodoList struct {
-	Counter int                      `json:"counter"`
-	ListId  int                      `json:"list_id"`
-	Name    string                   `json:"name"`
-	Todos   map[int]*todo.TodoItem   `json:"todos"`
+	Counter int                    `json:"counter"`
+	ListId  int                    `json:"list_id"`
+	Name    string                 `json:"name"`
+	Todos   map[int]*todo.TodoItem `json:"todos"`
 }

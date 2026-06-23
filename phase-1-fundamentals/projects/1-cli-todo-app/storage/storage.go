@@ -10,7 +10,7 @@ import (
 )
 
 const storageDir = "storage/lists"
- 
+
 // ensureStorageDir creates the storage directory if it doesn't exist yet.
 // Called before every write — safe to call repeatedly (os.MkdirAll is idempotent).
 func ensureStorageDir() error {

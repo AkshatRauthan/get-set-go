@@ -30,3 +30,4 @@ go.work.sum
 # Editor/IDE
 .idea/
 .vscode/
+phase-1-fundamentals/projects/1-cli-todo-app/storage/lists
