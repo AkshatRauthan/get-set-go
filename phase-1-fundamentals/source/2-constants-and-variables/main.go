@@ -8,7 +8,7 @@ func main() {
 	var age uint = 21 // unsigned integers
 	var isDeveloper bool = true
 
-	//without type decleration
+	//without type declaration
 	var c64 = 5 + 7i // complex numbers with 32-bit real and imaginary parts => (5+7i)
 
 	c64 = complex(10, imag(c64)) // updating real part
@@ -41,8 +41,13 @@ func main() {
 	fmt.Println("c64: ", c64)
 	fmt.Println("  ")
 
-	// In shorthand declaration if we are declaring/initialising multiple variables....
+	// In shorthand declaration if we are declaring/initializing multiple variables....
 	// Then using := will work only if there is at least one new variable in left side....
-	// x, y := 20, 10     ✖ [both x and y are already initialised]
-	// x,y,z := 10,20,30  ✔ [z is newly initialised]
+	// x, y := 20, 10     ✖ [both x and y are already initialized]
+	// x,y,z := 10,20,30  ✔ [z is newly initialized]
+
+	// We cannot declare global (package-level) variables in Go using the shorthand declaration operator (:=).
+	// The shorthand syntax is strictly limited to function bodies and will cause a compilation error if used outside a function.
+	// According to the Go language specification, every construct outside a function must begin with a distinct keyword
+	// (such as package, import, var, const, type, or func). As := is basically an assignment operator it will threw compiler error.
 }

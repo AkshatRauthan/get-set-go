@@ -17,7 +17,7 @@
 ## Roadmap Overview
 
 | Phase | Focus | Duration |
-|-------|-------|----------|
+|:------|:-----:|:--------:|
 | [1 — Fundamentals](#phase-1--go-fundamentals) | Variables, structs, interfaces, error handling | 2–3 weeks |
 | [2 — Concurrency & stdlib](#phase-2--concurrency--standard-library) | Goroutines, channels, net/http | 2–3 weeks |
 | [3 — Backend Development](#phase-3--backend-development) | REST APIs, databases, auth | 4–6 weeks |
@@ -139,7 +139,7 @@
 - `git-helper` — Subcommands, config file, shell completions, man page (cobra)
 - `publish-a-tool` — GoReleaser + GitHub Actions → `.deb` binary, brew tap. Actually ship it.
 
-> **Tip:** Bubbletea (by Charm) is what Docker and Kubernetes CLI teams use. It's the industry standard for Go TUIs — learn it and you can build anything terminal-based.
+> **Tip:** Bubbletea (by Charm) is what Docker and Kubernetes CLI teams use. It's the industry standard for Go TUIs — learn it, and you can build anything terminal-based.
 
 ---
 
@@ -188,7 +188,7 @@
 
 ### Books
 - *The Go Programming Language* — Donovan & Kernighan (the definitive book)
-- *Let's Go* — Alex Edwards (best practical web dev book for Go)
+- *Let's Go* — Alex Edwards (the best practical web dev book for Go)
 - *Let's Go Further* — Alex Edwards (APIs, auth, production)
 
 ### Practice
@@ -202,33 +202,39 @@
 
 ---
 
-## Repo Structure
+## Planned Projects Per Phase
 
 ```
 get-set-go/
 ├── README.md
+│
 ├── phase-1-fundamentals/
 │   ├── todo-cli/
-│   ├── unit-converter/
-│   └── number-guessing-game/
+│   └── unit-converter/    
+│
 ├── phase-2-concurrency/
 │   ├── port-scanner/
 │   ├── weather-cli/
 │   └── concurrent-downloader/
+│
 ├── phase-3-backend/
 │   ├── rest-api-stdlib/
 │   ├── url-shortener/
 │   └── auth-service/
+│
 ├── phase-4-linux/
 │   ├── my-grep/
 │   ├── file-organizer/
 │   └── system-monitor/
+│
 ├── phase-5-cli-tui/
 │   ├── tui-dashboard/
 │   └── git-helper/
+│
 ├── phase-6-advanced/
 │   ├── realtime-chat/
 │   └── grpc-microservice/
+│
 └── phase-7-beast-mode/
     └── (my magnum opus)
 ```
@@ -237,8 +243,8 @@ get-set-go/
 
 ## Progress Tracker
 
-- [ ] Phase 1 — Fundamentals
-- [ ] Phase 2 — Concurrency & stdlib
+- [x] Phase 1 — Fundamentals
+- [ ] Phase 2 — Concurrency & stdlib [ ONGOING ]
 - [ ] Phase 3 — Backend development
 - [ ] Phase 4 — Linux systems
 - [ ] Phase 5 — CLI & TUI apps

@@ -11,8 +11,8 @@ import (
 
 	// Importing our own subpackages using the module path declared in go.mod
 	// Module path (learngo/modules-practice) + subfolder name = import path
-	"github.com/developer-akshat/16-modules/mathutils"
-	"github.com/developer-akshat/16-modules/stringutils"
+	"16-modules/mathutils"
+	"16-modules/stringutils"
 )
 
 func main() {
