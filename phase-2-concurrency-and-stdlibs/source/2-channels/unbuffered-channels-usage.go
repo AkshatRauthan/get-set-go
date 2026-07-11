@@ -150,7 +150,7 @@ func guaranteedHandoffPattern() {
 
 // Entry point
 func unbufferedChannelsUsagePatters() {
-	fmt.Println("\nUsage Pattern 01: Done signals / goroutine synchronisation")
+	fmt.Println("Usage Pattern 01: Done signals / goroutine synchronisation")
 	fmt.Println("Already implemented as testUnbufferedChannels()")
 
 	fmt.Println("\nUsage Pattern 02: Request-response between two goroutines")

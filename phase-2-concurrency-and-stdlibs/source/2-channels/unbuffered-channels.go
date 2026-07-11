@@ -13,6 +13,7 @@ import "time"
 
 	Due to the above property of unbuffered channel to hinder func execution it is widely used as a mutex or for synchronization.
 */
+
 type s = struct{}
 
 // Always use this type for signals as struct{} objects have 0 bit of allocation

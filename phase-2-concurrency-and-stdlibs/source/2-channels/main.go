@@ -14,4 +14,7 @@ func main() {
 
 	fmt.Println("\nD. Unbuffered Channels: Usage Patterns\n")
 	unbufferedChannelsUsagePatters()
+
+	fmt.Println("\n\nE. Buffered Channels: Usage Patterns\n")
+	bufferedChannelsUsagePatterns()
 }
