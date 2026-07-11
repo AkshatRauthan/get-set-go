@@ -2,16 +2,17 @@ package main
 
 import "time"
 
-// Unbuffered Channels:
-// They are basic channels that can share a single variable/struct instance at a time.
+/*
+	Unbuffered Channels:
+	They are basic channels that can share a single variable/struct instance at a time.
 
-// They are blocking in nature:
-// - If func A sends data to an unbuffered channel, the flow of A will stop at that statement until another goroutine reads that data.
-// - If func B reads data from an unbuffered channel, the flow of func B will stop until it receives that data from channel. And in that case
-//	 if the channel currently is empty then B's flow will stop until another goroutine send data to the channel.
+	They are blocking in nature:
+	- If func A sends data to an unbuffered channel, the flow of A will stop at that statement until another goroutine reads that data.
+	- If func B reads data from an unbuffered channel, the flow of func B will stop until it receives that data from channel. And in that case
+		 if the channel currently is empty then B's flow will stop until another goroutine send data to the channel.
 
-// Due to the above property of unbuffered channel to hinder func execution it is widely used as a mutex or for synchronization.
-
+	Due to the above property of unbuffered channel to hinder func execution it is widely used as a mutex or for synchronization.
+*/
 type s = struct{}
 
 // Always use this type for signals as struct{} objects have 0 bit of allocation
