@@ -18,6 +18,17 @@ func CalculateFactorial2(n int, channel chan [2]int, wg *sync.WaitGroup) {
 	channel <- [2]int{n, ans}
 }
 
+/*
+	Here in the below function, We are directly calling wg.Wait() inside the caller function.
+	In this example this construct works perfectly because: We have 5 goroutines => Buffer is also of size 5.
+	So our buffer guaranteed to be non-blocking.
+
+	But if our buffer size is smaller than no. of gouroutines, then we will definetly be blocked from accessing it at a
+	certain time in the program.
+	Therefore in that case, we will again be calling the both wg.Wait() and close(channel) statement inside a saperate
+	goroutine prior to the for range loop.
+*/
+
 func UsingWaitGroupsWithBufferedChannels() {
 	// THE CHANGE: Add a buffer size (capacity) of 5.
 	channel := make(chan [2]int, 5)
