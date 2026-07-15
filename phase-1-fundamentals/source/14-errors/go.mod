@@ -1,3 +1,3 @@
-module 14-errors
+module phase1/14-errors
 
 go 1.26.3

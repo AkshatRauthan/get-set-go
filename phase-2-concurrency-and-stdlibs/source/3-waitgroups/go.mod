@@ -1,3 +1,3 @@
-module phase2/p3-waitgroups
+module phase2/3-waitgroups
 
 go 1.26.3

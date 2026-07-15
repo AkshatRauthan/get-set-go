@@ -1,3 +1,3 @@
-module 1-hello-world
+module phase1/1-hello-world
 
 go 1.26.3
