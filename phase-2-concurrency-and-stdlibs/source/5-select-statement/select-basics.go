@@ -66,7 +66,7 @@ func SelectStatementBasics() {
 	fmt.Println("Stating Select Statement")
 
 	// Stopper: It is a channel that returns a result after N seconds
-	// So we can listen up to 30 seconds.
+	// So we can listen up to N seconds.
 	stopper := time.After(time.Duration(N) * time.Second)
 
 	// Using a named infinite loop so that we can directly break if inside select statement.
