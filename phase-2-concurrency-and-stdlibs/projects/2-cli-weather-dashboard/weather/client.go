@@ -1,6 +1,7 @@
 package weather
 
 import (
+	"context"
 	"encoding/json"
 	"fmt"
 	"io"
@@ -11,13 +12,13 @@ import (
 )
 
 // getRequestHelper wraps the logic to make GET request with TimeOut to the address url with queryParams as request query.
-func getRequestHelper(apiUrl string, queryParams url.Values) ([]byte, error) {
+func getRequestHelper(ctx context.Context, apiUrl string, queryParams url.Values) ([]byte, error) {
 	if apiUrl == "" {
 		return nil, fmt.Errorf("getRequest: url cannot be empty")
 	}
 	client := http.Client{Timeout: 3 * time.Second}
 
-	req, err := http.NewRequest(http.MethodGet, apiUrl, nil)
+	req, err := http.NewRequestWithContext(ctx, http.MethodGet, apiUrl, nil)
 	if err != nil {
 		return nil, fmt.Errorf("getRequest-1: %w", err)
 	}
@@ -48,7 +49,7 @@ func getRequestHelper(apiUrl string, queryParams url.Values) ([]byte, error) {
 }
 
 // fetchCoordinates take a city as an input and returns its coordinates along with other metadata.
-func fetchCoordinates(city string) (GeocodingResult, error) {
+func fetchCoordinates(ctx context.Context, city string) (GeocodingResult, error) {
 	apiUrl := "https://geocoding-api.open-meteo.com/v1/search"
 	urlParams := make(map[string][]string)
 
@@ -57,7 +58,7 @@ func fetchCoordinates(city string) (GeocodingResult, error) {
 	urlParams["language"] = []string{"en"}
 	urlParams["format"] = []string{"json"}
 
-	resBody, err := getRequestHelper(apiUrl, urlParams)
+	resBody, err := getRequestHelper(ctx, apiUrl, urlParams)
 	if err != nil {
 		return GeocodingResult{}, fmt.Errorf("fetchCoordinates-1: %w", err)
 	}
@@ -76,7 +77,7 @@ func fetchCoordinates(city string) (GeocodingResult, error) {
 }
 
 // fetchWeeklyForecast take coordinates of a place and return its weekly weather forecast
-func fetchWeeklyForecast(longitude float64, latitude float64) (WeeklyWeatherResult, error) {
+func fetchWeeklyForecast(ctx context.Context, longitude float64, latitude float64) (WeeklyWeatherResult, error) {
 	apiUrl := "https://api.open-meteo.com/v1/forecast"
 
 	urlParams := make(map[string][]string)
@@ -87,7 +88,7 @@ func fetchWeeklyForecast(longitude float64, latitude float64) (WeeklyWeatherResu
 		"wind_speed_10m_max", "wind_speed_10m_min", "uv_index_max",
 	}
 
-	resBody, err := getRequestHelper(apiUrl, urlParams)
+	resBody, err := getRequestHelper(ctx, apiUrl, urlParams)
 	if err != nil {
 		return WeeklyWeatherResult{}, fmt.Errorf("fetchWeeklyForecast-1: %w", err)
 	}
@@ -102,14 +103,14 @@ func fetchWeeklyForecast(longitude float64, latitude float64) (WeeklyWeatherResu
 }
 
 // fetchHourlyForecast take coordinates of a place and return its hourly forecast for today
-func fetchHourlyForecast(longitude float64, latitude float64) (HourlyWeatherResult, error) {
+func fetchHourlyForecast(ctx context.Context, longitude float64, latitude float64) (HourlyWeatherResult, error) {
 	apiUrl := "https://api.open-meteo.com/v1/forecast"
 	urlParams := make(map[string][]string)
 	urlParams["latitude"] = []string{strconv.FormatFloat(latitude, 'f', -4, 32)}
 	urlParams["longitude"] = []string{strconv.FormatFloat(longitude, 'f', -4, 32)}
 	urlParams["hourly"] = []string{"temperature_2m", "precipitation_probability", "wind_speed_10m", "visibility", "uv_index"}
 
-	resBody, err := getRequestHelper(apiUrl, urlParams)
+	resBody, err := getRequestHelper(ctx, apiUrl, urlParams)
 	if err != nil {
 		return HourlyWeatherResult{}, fmt.Errorf("fetchHourlyForecast-1: %w", err)
 	}
@@ -124,14 +125,14 @@ func fetchHourlyForecast(longitude float64, latitude float64) (HourlyWeatherResu
 }
 
 // fetchCurrentWeather take coordinates of a place and return its current weather information
-func fetchCurrentWeather(longitude float64, latitude float64) (CurrentWeatherResult, error) {
+func fetchCurrentWeather(ctx context.Context, longitude float64, latitude float64) (CurrentWeatherResult, error) {
 	apiUrl := "https://api.open-meteo.com/v1/forecast"
 	urlParams := make(map[string][]string)
 	urlParams["latitude"] = []string{strconv.FormatFloat(latitude, 'f', -4, 32)}
 	urlParams["longitude"] = []string{strconv.FormatFloat(longitude, 'f', -4, 32)}
 	urlParams["current"] = []string{"temperature_2m", "relative_humidity_2m", "wind_speed_10m", "weather_code", "apparent_temperature"}
 
-	resBody, err := getRequestHelper(apiUrl, urlParams)
+	resBody, err := getRequestHelper(ctx, apiUrl, urlParams)
 	if err != nil {
 		return CurrentWeatherResult{}, fmt.Errorf("fetchCurrentWeather-1: %w", err)
 	}

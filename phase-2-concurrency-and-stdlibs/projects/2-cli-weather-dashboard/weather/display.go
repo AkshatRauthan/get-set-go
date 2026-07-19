@@ -1,17 +1,18 @@
 package weather
 
 import (
+	"context"
 	"fmt"
 	"strings"
 	"time"
 )
 
-func GetCurrentWeather(cityName string) error {
-	cityDetails, err := fetchCoordinates(cityName)
+func GetCurrentWeather(ctx context.Context, cityName string) error {
+	cityDetails, err := fetchCoordinates(ctx, cityName)
 	if err != nil {
 		return fmt.Errorf("GetCurrentWeather-1: %v", err)
 	}
-	currentWeather, err := fetchCurrentWeather(cityDetails.Longitude, cityDetails.Latitude)
+	currentWeather, err := fetchCurrentWeather(ctx, cityDetails.Longitude, cityDetails.Latitude)
 	if err != nil {
 		return fmt.Errorf("GetCurrentWeather-2: %v", err)
 	}
@@ -19,12 +20,12 @@ func GetCurrentWeather(cityName string) error {
 	return nil
 }
 
-func GetHourlyWeatherForecast(cityName string) error {
-	cityDetails, err := fetchCoordinates(cityName)
+func GetHourlyWeatherForecast(ctx context.Context, cityName string) error {
+	cityDetails, err := fetchCoordinates(ctx, cityName)
 	if err != nil {
 		return fmt.Errorf("GetHourlyWeatherForecast-1: %v", err)
 	}
-	hourlyForecast, err := fetchHourlyForecast(cityDetails.Longitude, cityDetails.Latitude)
+	hourlyForecast, err := fetchHourlyForecast(ctx, cityDetails.Longitude, cityDetails.Latitude)
 	if err != nil {
 		return fmt.Errorf("GetHourlyWeatherForecast-2: %v", err)
 	}
@@ -32,12 +33,12 @@ func GetHourlyWeatherForecast(cityName string) error {
 	return nil
 }
 
-func GetWeeklyWeatherForecast(cityName string) error {
-	cityDetails, err := fetchCoordinates(cityName)
+func GetWeeklyWeatherForecast(ctx context.Context, cityName string) error {
+	cityDetails, err := fetchCoordinates(ctx, cityName)
 	if err != nil {
 		return fmt.Errorf("GetWeeklyWeatherForecast-1: %v", err)
 	}
-	weeklyForecast, err := fetchWeeklyForecast(cityDetails.Longitude, cityDetails.Latitude)
+	weeklyForecast, err := fetchWeeklyForecast(ctx, cityDetails.Longitude, cityDetails.Latitude)
 	if err != nil {
 		return fmt.Errorf("GetWeeklyWeatherForecast-2: %v", err)
 	}
