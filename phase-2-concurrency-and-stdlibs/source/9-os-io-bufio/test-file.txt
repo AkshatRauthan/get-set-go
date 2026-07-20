@@ -1,0 +1,5 @@
+This is the result of WriteFileLineByLine operation Line1
+This is the result of WriteFileLineByLine operation Line2
+This is the result of WriteFileLineByLine operation Line3
+This is the result of WriteFileLineByLine operation Line4
+This is the result of WriteFileLineByLine operation Line5
