@@ -11,15 +11,19 @@ import (
 // But in GO matching is performed on basis of how well defined the matching string is.....
 
 // So the order of matching will be....
-// -> GET /latest and GET /all
+// -> GET /latest, GET /all and POST /{$}
 // -> GET /{messageId}
 // -> /
+
+// Difference btw / And /{$}
+// The / pattern will match all the paths that will reach its pattern checks, eg: /a/b/c, /sjvjbv/av etc...
+// The /{$} patter will only cater req whose current url is "/" only.
 
 func messageRouter() http.Handler {
 	mux := http.NewServeMux()
 
 	mux.Handle("/", handlers.GenericMessageHandler())
-	mux.Handle("POST /", handlers.SendMessageHandler())
+	mux.Handle("POST /{$}", handlers.SendMessageHandler())
 
 	mux.Handle("GET /all", handlers.GetAllMessagesHandler())
 	mux.Handle("GET /{messageId}", handlers.ReceiveMessageHandler())

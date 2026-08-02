@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"net/http"
+	"strconv"
 )
 
 /*
@@ -25,9 +26,6 @@ import (
 type Message struct {
 	Message string `json:"message"`
 }
-type ReadMessageRequest struct {
-	MessageId int `json:"messageId"`
-}
 
 var maxId = -1
 var messages = make(map[int]string)
@@ -44,6 +42,7 @@ func SendMessageHandler() http.HandlerFunc {
 		if err := json.NewDecoder(r.Body).Decode(&msg); err != nil {
 			w.WriteHeader(http.StatusBadRequest)
 			_ = json.NewEncoder(w).Encode(map[string]string{"error": "invalid message format"})
+			maxId -= 1
 			return
 		}
 
@@ -60,20 +59,22 @@ func ReceiveMessageHandler() http.HandlerFunc {
 		fmt.Println("Receive Message Request Received")
 		w.Header().Set("Content-Type", "application/json")
 
-		var readRequest ReadMessageRequest
-		if err := json.NewDecoder(r.Body).Decode(&readRequest); err != nil {
+		id := r.PathValue("messageId")
+		messageId, err := strconv.Atoi(id)
+
+		if err == nil {
 			w.WriteHeader(http.StatusBadRequest)
-			_ = json.NewEncoder(w).Encode(map[string]string{"error": "invalid message format"})
+			_ = json.NewEncoder(w).Encode(map[string]string{"error": "error parsing message id"})
 			return
 		}
 
-		if _, ok := messages[readRequest.MessageId]; !ok {
+		if _, ok := messages[messageId]; !ok {
 			w.WriteHeader(http.StatusNotFound)
 			_ = json.NewEncoder(w).Encode(map[string]string{"error": "message not found"})
 			return
 		}
 
-		message := messages[readRequest.MessageId]
+		message := messages[messageId]
 		w.WriteHeader(http.StatusOK)
 		_ = json.NewEncoder(w).Encode(map[string]any{"success": true, "status": "message received successfully", "message": message})
 		return
