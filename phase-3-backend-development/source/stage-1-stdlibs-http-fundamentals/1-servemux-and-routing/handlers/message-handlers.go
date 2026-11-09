@@ -50,7 +50,6 @@ func SendMessageHandler() http.HandlerFunc {
 
 		w.WriteHeader(http.StatusOK)
 		_ = json.NewEncoder(w).Encode(map[string]any{"success": true, "status": "message send successfully", "message": messages[maxId]})
-		return
 	}
 }
 
@@ -77,7 +76,6 @@ func ReceiveMessageHandler() http.HandlerFunc {
 		message := messages[messageId]
 		w.WriteHeader(http.StatusOK)
 		_ = json.NewEncoder(w).Encode(map[string]any{"success": true, "status": "message received successfully", "message": message})
-		return
 	}
 }
 
@@ -94,7 +92,6 @@ func GetAllMessagesHandler() http.HandlerFunc {
 		}
 
 		_ = json.NewEncoder(w).Encode(map[string]any{"success": true, "status": "received all messages successfully", "message": messages})
-		return
 	}
 }
 
@@ -112,6 +109,5 @@ func GetLatestMessageHandler() http.HandlerFunc {
 
 		message := messages[maxId]
 		_ = json.NewEncoder(w).Encode(map[string]any{"success": true, "status": "latest message received successfully", "message": message})
-		return
 	}
 }

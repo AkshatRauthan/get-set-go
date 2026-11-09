@@ -18,7 +18,7 @@ func incrementCounter() {
 
 func goroutinesRaceCondition() {
 	print("Initial count:", count)
-	for i := 0; i < 100; i++ {
+	for range 100 {
 		go incrementCounter()
 	}
 	print("\nFinal Count after running 100 concurrent increment operations: ", count, "\n")
