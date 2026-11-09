@@ -244,8 +244,8 @@ get-set-go/
 ## Progress Tracker
 
 - [x] Phase 1 — Fundamentals
-- [ ] Phase 2 — Concurrency & stdlib [ ONGOING ]
-- [ ] Phase 3 — Backend development
+- [x] Phase 2 — Concurrency & stdlib 
+- [ ] Phase 3 — Backend development [ ONGOING ]
 - [ ] Phase 4 — Linux systems
 - [ ] Phase 5 — CLI & TUI apps
 - [ ] Phase 6 — Advanced backend
